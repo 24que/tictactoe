@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class TicTacToeGame implements TicTacToeLogic{
     private final FieldState[] fieldStates = new FieldState[9];
-    private FieldState currentPlayer = FieldState.O;
+    private FieldState lastPlayer = FieldState.O;
 
     public TicTacToeGame() {
         Arrays.fill(fieldStates, FieldState.NONE);
@@ -14,17 +14,17 @@ public class TicTacToeGame implements TicTacToeLogic{
         if (fieldStates[index] != FieldState.NONE) {
             throw new IllegalArgumentException("Feld ist bereits belegt!");
         }
-        if(currentPlayer.equals(FieldState.O)) {
+        if(lastPlayer.equals(FieldState.O)) {
             fieldStates[index] = FieldState.X;
-            currentPlayer = FieldState.X;
-        }else if(currentPlayer.equals(FieldState.X)) {
+            lastPlayer = FieldState.X;
+        }else if(lastPlayer.equals(FieldState.X)) {
             fieldStates[index] = FieldState.O;
-            currentPlayer = FieldState.O;
+            lastPlayer = FieldState.O;
         }
     }
 
     public FieldState getWinner() {
-        FieldState winner = null;
+        FieldState winner;
 
         // Check rows
         for (int i = 0; i < 9; i += 3) {
@@ -71,15 +71,15 @@ public class TicTacToeGame implements TicTacToeLogic{
 
     public void resetGame() {
         Arrays.fill(fieldStates, FieldState.NONE);
-        currentPlayer = FieldState.O;
+        lastPlayer = FieldState.O;
     }
 
     public FieldState[] getFieldStates() {
         return fieldStates;
     }
 
-    public FieldState getCurrentPlayer() {
-        return currentPlayer;
+    public FieldState getLastPlayer() {
+        return lastPlayer;
     }
 
     private boolean areThreeStatesEqual(FieldState state1, FieldState state2, FieldState state3) {

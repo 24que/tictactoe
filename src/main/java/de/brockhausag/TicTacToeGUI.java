@@ -37,7 +37,7 @@ public class TicTacToeGUI implements ActionListener {
         if (index != -1) {
             try {
                 game.makeMove(index);
-                updateButtonText(button, game.getCurrentPlayer());
+                updateButtonText(button, game.getLastPlayer());
                 button.setEnabled(false);
 
                 FieldState winner = game.getWinner();
