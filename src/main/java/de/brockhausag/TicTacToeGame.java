@@ -14,44 +14,23 @@ public class TicTacToeGame implements TicTacToeLogic{
         if (fieldStates[index] != FieldState.NONE) {
             throw new IllegalArgumentException("Feld ist bereits belegt!");
         }
-        if(lastPlayer.equals(FieldState.O)) {
-            fieldStates[index] = FieldState.X;
-            lastPlayer = FieldState.X;
-        }else if(lastPlayer.equals(FieldState.X)) {
-            fieldStates[index] = FieldState.O;
-            lastPlayer = FieldState.O;
-        }
+        //TODO Implementiere den Zug
     }
 
     public FieldState getWinner() {
         FieldState winner;
 
         // Check rows
-        for (int i = 0; i < 9; i += 3) {
-            winner = checkThreeStates(fieldStates[i], fieldStates[i + 1], fieldStates[i + 2]);
-            if (winner != null) {
-                return winner;
-            }
-        }
+        //TODO: Implementierung der Überprüfung der Zeilen
 
         // Check columns
-        for (int i = 0; i < 3; i++) {
-            winner = checkThreeStates(fieldStates[i], fieldStates[i + 3], fieldStates[i + 6]);
-            if (winner != null) {
-                return winner;
-            }
-        }
+        //TODO: Implementierung der Überprüfung der Spalten
+
 
         // Check diagonals
-        winner = checkThreeStates(fieldStates[0], fieldStates[4], fieldStates[8]);
-        if (winner != null) {
-            return winner;
-        }
+        //TODO: Implementierung der Überprüfung der Diagonalen
 
-        winner = checkThreeStates(fieldStates[2], fieldStates[4], fieldStates[6]);
-        if (winner != null) {
-            return winner;
-        }
+
 
         // Check for tie
         for (FieldState state : fieldStates) {
@@ -70,8 +49,7 @@ public class TicTacToeGame implements TicTacToeLogic{
     }
 
     public void resetGame() {
-        Arrays.fill(fieldStates, FieldState.NONE);
-        lastPlayer = FieldState.O;
+        //TODO Implementierung des Game resets
     }
 
     public FieldState[] getFieldStates() {
